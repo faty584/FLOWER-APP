@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 
-import Flower from './Pages/flower';
-import Addflower from './Pages/Addflower';
-import Navbar from './Components/navbar';
-import Footer from './Components/Footer';
+import Flower from './Pages/flower.js';
+import Addflower from './Pages/Addflower.js';
+import Navbar from './Components/navbar.js';
+import Footer from './Components/Footer.js';
 import axios from 'axios';
 
 const App = () => {
