@@ -26,12 +26,13 @@ const App = () => {
   return (
     <Router>
       <Navbar />
-
-      <Routes>
-        <Route path="/" element={<Navigate to="/flowers" />} />
-        <Route path="/flowers" element={<Flower flowers={flowers} />} />
-        <Route path="/add" element={<Addflower />} />
-      </Routes>
+      <div className="responsive-container">
+        <Routes>
+          <Route path="/" element={<Navigate to="/flowers" />} />
+          <Route path="/flowers" element={<Flower flowers={flowers} />} />
+          <Route path="/add" element={<Addflower />} />
+        </Routes>
+      </div>
       <Footer />
     </Router>
   );
