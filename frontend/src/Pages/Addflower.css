@@ -1,0 +1,83 @@
+.addflower-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  background: #f9f9f9;
+}
+
+.addflower-form {
+  background: #fff;
+  padding: 32px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.addflower-form h2 {
+  margin-bottom: 8px;
+  color: #222;
+  text-align: center;
+}
+
+.addflower-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #333;
+  gap: 4px;
+}
+
+.addflower-form input,
+.addflower-form textarea {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin-top: 2px;
+}
+
+.addflower-form textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.addflower-form button {
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.addflower-form button:disabled {
+  background: #888;
+  cursor: not-allowed;
+}
+
+.form-message {
+  text-align: center;
+  color: #d32f2f;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+@media (max-width: 600px) {
+  .addflower-form {
+    padding: 16px 8px;
+    max-width: 100%;
+  }
+
+  .deleteButton {
+    width: 70px;
+    height: 35px;
+  }
+}

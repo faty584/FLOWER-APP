@@ -1,0 +1,117 @@
+h2 {
+   margin-top: 35px;
+   color: red;
+   font-size: 28px;         /* Large on desktop */
+   text-align: left;        /* Left on desktop */
+   margin-bottom: 0;
+}
+
+.second-parent {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.admintext {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start; /* Left on desktop */
+    align-items: center;
+    min-width: 180px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.flowerbutton,
+.addflowersButton {
+    border-radius: 30px;
+    font-size: 1.2rem;           /* Increased font size */
+    font-weight: 600;
+    padding: 18px;          /* Increased padding for bigger buttons */
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100px;
+}
+
+.flowerbutton {
+    background-color: black;
+    color: white;
+    margin-left: 5px;
+}
+
+.addflowersButton {
+    background-color: whitesmoke;
+    color: black;
+    margin-left: 10px;
+}
+
+/* Default (desktop/tablet): balanced size */
+.deleteButton {
+  width:90px;
+  height: 35px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: transform 0.2s;
+}
+
+/* Slightly smaller on mobile */
+@media (max-width: 700px) {
+  .deleteButton {
+    width: 70px;
+    height: 25px;
+    margin-top: 8px;
+  }
+}
+
+/* Responsive: center admin panel and stack vertically on small screens */
+@media (max-width: 1024px) {
+    h2 {
+        font-size: 40px;      /* Smaller on tablet/mobile */
+           /* Centered */
+        width: 100%;
+    }
+    .admintext {
+        justify-content: center; /* Centered */
+    }
+}
+
+@media (max-width: 700px) {
+    .second-parent {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .admintext {
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    .buttons {
+        justify-content: flex-start;
+        margin-bottom: 10px;
+    }
+    .flowerbutton, .addflowersButton {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+/* Remove large gap on desktop for better alignment */
+@media (min-width: 768px) {
+    .second-parent {
+        gap: 0;
+    }
+}
+@media (min-width: 1024px) {
+    .second-parent {
+        gap: 0;
+    }
+}
