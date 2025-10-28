@@ -37,7 +37,7 @@ const Addflower = () => {
 
       // ✅ Correct API endpoint
       const response = await axios.post(
-        'https://flower-delivery-backend1.onrender.com/api/flowers',
+        'https://flower-deliverybackend.onrender.com/api/flowers',
         data,
         { headers: { 'Content-Type': 'multipart/form-data' } }
       );

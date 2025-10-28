@@ -1,27 +1,28 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 
-import Flower from './Pages/flower.js';
+// import Flower from './Pages/Flower.js'
 import Addflower from './Pages/Addflower.js';
-import Navbar from './Components/navbar.js';
+import Flowers from './Pages/Flowers.js';
+import Navbar from './Components/Navbar.js';
 import Footer from './Components/Footer.js';
-import axios from 'axios';
+// import axios from 'axios';
 
 const App = () => {
-  const [flowers, setFlowers] = useState([]);
+  // const [flowers, setFlowers] = useState([]);
 
-  useEffect(() => {
-    const fetchFlowers = async () => {
-      try {
-        const response = await axios.get('/api/flowers');
-        setFlowers(response.data);
-      } catch (error) {
-        console.error('Error fetching flowers:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchFlowers = async () => {
+  //     try {
+  //       const response = await axios.get('/api/flowers');
+  //       setFlowers(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching flowers:', error);
+  //     }
+  //   };
 
-    fetchFlowers();
-  }, []);
+  //   fetchFlowers();
+  // }, []);
 
   return (
     <Router>
@@ -29,7 +30,7 @@ const App = () => {
       <div className="responsive-container">
         <Routes>
           <Route path="/" element={<Navigate to="/flowers" />} />
-          <Route path="/flowers" element={<Flower flowers={flowers} />} />
+          <Route path="/flowers" element={<Flowers />} />
           <Route path="/add" element={<Addflower />} />
         </Routes>
       </div>
