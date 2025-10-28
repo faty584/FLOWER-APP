@@ -1,133 +1,97 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import './Addflower.css';
+import React, { useState } from "react";
+import axios from "axios";
 
-const Addflower = () => {
-  const [form, setForm] = useState({
-    name: '',
-    category: '',
-    description: '',
-    price: '',
-    image: null,
-  });
+const AddFlower = () => {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState('');
 
-  // Handle input changes
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === 'image') {
-      setForm({ ...form, image: files[0] });
-    } else {
-      setForm({ ...form, [name]: value });
-    }
-  };
-
-  // Handle form submission=
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setMessage('');
 
     try {
-      const data = new FormData();
-      Object.entries(form).forEach(([key, value]) => {
-        data.append(key, value);
-      });
+      // ✅ Step 1: Create FormData
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("description", description);
+      formData.append("price", price);
+      formData.append("category", category);
+      formData.append("image", imageFile); // important! matches upload.single('image')
 
-      // ✅ Correct API endpoint
-      const response = await axios.post(
-        'https://flower-deliverybackend.onrender.com/api/flowers',
-        data,
-        { headers: { 'Content-Type': 'multipart/form-data' } }
+      // ✅ Step 2: Send to backend (replace with your real Render API URL)
+      const res = await axios.post(
+        "https://flower-deliverybackend.onrender.com/api/flowers",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
 
-      console.log('✅ Server response:', response.data);
-      setMessage('Flower added successfully!');
+      console.log("✅ Flower added:", res.data);
+      alert("Flower added successfully!");
 
-      // Reset form
-      setForm({
-        name: '',
-        category: '',
-        description: '',
-        price: '',
-        image: null,
-      });
+      // ✅ Step 3: Clear form
+      setName("");
+      setDescription("");
+      setPrice("");
+      setCategory("");
+      setImageFile(null);
     } catch (error) {
-      console.error('❌ Error response:', error.response?.data || error.message);
-      setMessage('Failed to add flower.');
+      console.error("❌ Error response:", error.response || error);
+      alert("Failed to upload flower. Check console for details.");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
-    <div className="addflower-container">
-      <form className="addflower-form" onSubmit={handleSubmit}>
-        <h2>Add New Flower</h2>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Flower Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        required
+      />
+      <input
+        type="text"
+        placeholder="Description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        required
+      />
+      <input
+        type="number"
+        placeholder="Price"
+        value={price}
+        onChange={(e) => setPrice(e.target.value)}
+        required
+      />
+      <input
+        type="text"
+        placeholder="Category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        required
+      />
+      <input
+        type="file"
+        accept="image/*"
+        onChange={(e) => setImageFile(e.target.files[0])}
+        required
+      />
 
-        <label>
-          image:
-          <input
-            type="file"
-            name="image"
-            accept="image/*"
-            onChange={handleChange}
-            required
-          />
-        </label>
-
-        <label>
-          name:
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            required
-          />
-        </label>
-
-        <label>
-          category:
-          <input
-            type="text"
-            name="category"
-            value={form.category}
-            onChange={handleChange}
-            required
-          />
-        </label>
-
-        <label>
-          description:
-          <textarea
-            name="description"
-            value={form.description}
-            onChange={handleChange}
-            required
-          />
-        </label>
-
-        <label>
-          price:
-          <input
-            type="number"
-            name="price"
-            value={form.price}
-            onChange={handleChange}
-            required
-          />
-        </label>
-
-        <button type="submit" disabled={loading}>
-          {loading ? 'Adding...' : 'Add Flower'}
-        </button>
-
-        {message && <p className="form-message">{message}</p>}
-      </form>
-    </div>
+      <button type="submit" disabled={loading}>
+        {loading ? "Uploading..." : "Add Flower"}
+      </button>
+    </form>
   );
 };
 
-export default Addflower;
+export default AddFlower;
