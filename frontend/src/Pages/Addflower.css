@@ -4,6 +4,7 @@
   align-items: center;
   min-height: 70vh;
   background: #f9f9f9;
+  padding: 20px;
 }
 
 .addflower-form {
@@ -15,13 +16,45 @@
   flex-direction: column;
   gap: 18px;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
 }
 
 .addflower-form h2 {
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   color: #222;
   text-align: center;
+  font-size: 1.75rem;
+}
+
+.image-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.image-upload-label {
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.image-input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-top: 8px;
 }
 
 .addflower-form label {
@@ -29,21 +62,30 @@
   flex-direction: column;
   font-weight: 500;
   color: #333;
-  gap: 4px;
+  gap: 6px;
+  width: 100%;
 }
 
 .addflower-form input,
 .addflower-form textarea {
-  padding: 8px;
-  border-radius: 6px;
+  padding: 12px;
+  border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 1rem;
   margin-top: 2px;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+.addflower-form input:focus,
+.addflower-form textarea:focus {
+  outline: none;
+  border-color: #222;
 }
 
 .addflower-form textarea {
   resize: vertical;
-  min-height: 60px;
+  min-height: 100px;
 }
 
 .addflower-form button {

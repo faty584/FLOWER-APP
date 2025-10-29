@@ -57,6 +57,31 @@ const Addflower = () => {
       <form className="addflower-form" onSubmit={handleSubmit}>
         <h2>Add New Flower</h2>
 
+        <div className="image-upload-container">
+          <label className="image-upload-label">
+            Image:
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => {
+                setImageFile(e.target.files[0]);
+                // Preview image if needed
+                if (e.target.files[0]) {
+                  const reader = new FileReader();
+                  reader.onload = (e) => {
+                    document.getElementById('image-preview').src = e.target.result;
+                    document.getElementById('image-preview').style.display = 'block';
+                  };
+                  reader.readAsDataURL(e.target.files[0]);
+                }
+              }}
+              required
+              className="image-input"
+            />
+          </label>
+          <img id="image-preview" className="image-preview" alt="Preview" style={{display: 'none'}} />
+        </div>
+
         <label>
           Name:
           <input
@@ -65,6 +90,18 @@ const Addflower = () => {
             placeholder="Flower Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </label>
+
+        <label>
+          Category:
+          <input
+            type="text"
+            name="category"
+            placeholder="Category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
             required
           />
         </label>
@@ -88,28 +125,6 @@ const Addflower = () => {
             placeholder="Price"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            required
-          />
-        </label>
-
-        <label>
-          Category:
-          <input
-            type="text"
-            name="category"
-            placeholder="Category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            required
-          />
-        </label>
-
-        <label>
-          Image:
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => setImageFile(e.target.files[0])}
             required
           />
         </label>
