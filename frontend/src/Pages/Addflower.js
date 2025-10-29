@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
+import './Addflower.css';
 
-const AddFlower = () => {
+const Addflower = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,47 +53,75 @@ const AddFlower = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Flower Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        required
-      />
-      <input
-        type="number"
-        placeholder="Price"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Category"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-        required
-      />
-      <input
-        type="file"
-        accept="image/*"
-        onChange={(e) => setImageFile(e.target.files[0])}
-        required
-      />
+    <div className="addflower-container">
+      <form className="addflower-form" onSubmit={handleSubmit}>
+        <h2>Add New Flower</h2>
 
-      <button type="submit" disabled={loading}>
-        {loading ? "Uploading..." : "Add Flower"}
-      </button>
-    </form>
+        <label>
+          Name:
+          <input
+            type="text"
+            name="name"
+            placeholder="Flower Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </label>
+
+        <label>
+          Description:
+          <textarea
+            name="description"
+            placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </label>
+
+        <label>
+          Price:
+          <input
+            type="number"
+            name="price"
+            placeholder="Price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            required
+          />
+        </label>
+
+        <label>
+          Category:
+          <input
+            type="text"
+            name="category"
+            placeholder="Category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            required
+          />
+        </label>
+
+        <label>
+          Image:
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setImageFile(e.target.files[0])}
+            required
+          />
+        </label>
+
+        <button type="submit" disabled={loading}>
+          {loading ? "Adding..." : "Add Flower"}
+        </button>
+
+        {message && <p className="form-message">{message}</p>}
+      </form>
+    </div>
   );
 };
 
-export default AddFlower;
+export default Addflower;
