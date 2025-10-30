@@ -1,0 +1,95 @@
+.container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 30px 20px;
+  box-sizing: border-box;
+}
+
+.flower-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.flower-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 2px solid black;
+  margin-top: 50px;
+}
+
+.flower-card {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.delete-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #afa5a5;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.delete-icon:hover {
+  background-color: #cc0000;
+}
+.flower-details p strong {
+  color: red;
+}
+
+.flower-details p {
+  font-size: 15px;
+}
+.flower-details {
+  margin-top: 33px;
+}
+
+.loading {
+  text-align: center;
+  color: blue;
+  font-size: large;
+  font-weight: 900;
+}
+
+@media (min-width: 768px) {
+  .flower-details p {
+    font-size: 1.3em;
+  }
+
+  .flower-card img {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    border: 2px solid black;
+    margin-top: 50px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .flower-details p {
+    font-size: 1.3em;
+  }
+
+  .flower-card img {
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
+    border: 2px solid black;
+    margin-top: 50px;
+  }
+}
